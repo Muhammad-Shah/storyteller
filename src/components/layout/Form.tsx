@@ -53,12 +53,6 @@ const Form = () => {
           Make your own story!
         </h1>
         {error && <p className="text-red-500 text-center">{error}</p>}
-        {generatedStory && (
-          <div className="mt-4 p-4 bg-gray-100 border border-gray-300 rounded-md">
-            <h2 className="text-2xl font-bold">Generated Story:</h2>
-            <p>{generatedStory}</p>
-          </div>
-        )}
         <div className="mb-4">
           <label className="block text-md font-bold text-black">
             Story Plot
@@ -177,6 +171,12 @@ const Form = () => {
             Generate Story
           </button>
         </div>
+        {generatedStory && (
+          <div className="mt-4 p-4 bg-gray-100 border border-gray-300 rounded-md">
+            <h2 className="text-2xl font-bold">Generated Story:</h2>
+            <p>{generatedStory}</p>
+          </div>
+        )}
       </div>
     </div>
   );
