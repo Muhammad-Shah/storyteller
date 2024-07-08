@@ -32,7 +32,7 @@ def generate(topic, length, temperature, genre=None, narrative_perspective=None,
     # Base human message content
     human_message_content = f"""
     Please generate a story based on the following prompt: "{topic}".
-    The completion should be approximately `{length}` length.
+    The completion should be approximately `{length}` length. if possible use paragraphs.
     """
 
     # Append optional parameters if they are provided with more explanation
