@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b30b1d5f-70ec-4492-a5f4-93d0c7cd3379/deploy-status?branch=main)](https://app.netlify.com/sites/storytellerai/deploys)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
