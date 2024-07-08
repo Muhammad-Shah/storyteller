@@ -18,7 +18,6 @@ origins = [
     "https://storyteller-beta.vercel.app",
     "https://storyteller-qq42d1a59-muhammad-shahs-projects.vercel.app/",
     "https://storyteller-git-master-muhammad-shahs-projects.vercel.app/"
-    ""
 ]
 
 app.add_middleware(
