@@ -45,7 +45,7 @@ const Form = () => {
     };
 
     try {
-      const response = await fetch("https://storyteller-coral.vercel.app/api/api/generate", {
+      const response = await fetch("https://storyteller-coral.vercel.app/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
