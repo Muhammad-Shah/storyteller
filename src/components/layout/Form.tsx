@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaCopy } from "react-icons/fa"; // Import the copy icon
-import api from "./api";
+import axios from 'axios';
 
 const Form = () => {
   const [storyPlot, setStoryPlot] = useState("");
@@ -17,34 +17,29 @@ const Form = () => {
   const [copyStatus, setCopyStatus] = useState<string | null>(null);
 
   const handleGenerateStory = async () => {
-    const storyData = {
-      topic: storyPlot,
-      length: storyLength,
-      temperature: creativityLevel / 100,
-      genre: genre || null,
-      narrative_perspective: narrativePerspective || null,
-      character_name: characterName || null,
-      character_description: characterDescription || null,
-      setting_description: settingDescription || null,
-    };
-
-    try {
-      const response = await api.post("/generate", storyData);
-
-      if (response.status !== 200) {
-        throw new Error("Network response was not ok");
-      }
-
-      const data = response.data;
-      console.log("Story generated:", data);
-      setGeneratedStory(data.story);
-      setError(null); // Clear any previous errors
-    } catch (error) {
-      console.error("There was a problem with the fetch operation:", error);
-      setError("Failed to generate story. Please try again.");
-      setGeneratedStory(null); // Clear the story if there was an error
-    }
+  const storyData = {
+    topic: storyPlot,
+    length: storyLength,
+    temperature: creativityLevel / 100,
+    genre: genre || null,
+    narrative_perspective: narrativePerspective || null,
+    character_name: characterName || null,
+    character_description: characterDescription || null,
+    setting_description: settingDescription || null,
   };
+
+  try {
+    const response = await axios.post('/generation', storyData);
+    const data = response.data;
+    console.log("Story generated:", data);
+    setGeneratedStory(data.story);
+    setError(null); // Clear any previous errors
+  } catch (error) {
+    console.error("There was a problem with the fetch operation:", error);
+    setError("Failed to generate story. Please try again.");
+    setGeneratedStory(null); // Clear the story if there was an error
+  }
+};
 
   const handleTextToSpeech = () => {
     if (generatedStory) {
