@@ -1,12 +1,17 @@
+const { createProxyMiddleware } = require("http-proxy-middleware");
+
 module.exports = {
   async headers() {
     return [
       {
-        // matching all API routes
         source: "/api/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
-          { key: "Access-Control-Allow-Origin", value: "*" },
+          {
+            key: "Access-Control-Allow-Origin",
+            value:
+              "https://storyteller-lknagocza-muhammad-shahs-projects.vercel.app",
+          },
           {
             key: "Access-Control-Allow-Methods",
             value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
@@ -20,34 +25,12 @@ module.exports = {
       },
     ];
   },
-};
-
-const nextConfig = {
-  rewrites: async () => {
+  async rewrites() {
     return [
       {
         source: "/api/:path*",
-        destination:
-          process.env.NODE_ENV === "development"
-            ? "http://127.0.0.1:8000/api/:path*"
-            : "/api/",
-      },
-      {
-        source: "/docs",
-        destination:
-          process.env.NODE_ENV === "development"
-            ? "http://127.0.0.1:8000/docs"
-            : "/api/docs",
-      },
-      {
-        source: "/openapi.json",
-        destination:
-          process.env.NODE_ENV === "development"
-            ? "http://127.0.0.1:8000/openapi.json"
-            : "/api/openapi.json",
+        destination: "https://storyteller-coral.vercel.app/api/:path*",
       },
     ];
   },
 };
-
-module.exports = nextConfig;
