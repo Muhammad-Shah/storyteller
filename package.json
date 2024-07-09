@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "fastapi-dev": "pip3 install -r requirements.txt && python3 -m uvicorn api.main:app --reload",
+    "uvi": "uvicorn api.main:app --reload",
+    "next-dev": "next dev",
+    "dev": "concurrently \"npm run next-dev\" \"npm run fastapi-dev\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "backend": "uvicorn api.main:app --reload",
-    "dev": "concurrently \"npm run backend\" \"npm start\""
+    "xy": "concurrently \"npm run start\" \"npm run uvi\""
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
