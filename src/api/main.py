@@ -14,10 +14,8 @@ async def check():
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://storytellerai.netlify.app",  # Add your Netlify app origin here
-    "https://storyteller-beta.vercel.app",
-    "https://storyteller-qq42d1a59-muhammad-shahs-projects.vercel.app/",
-    "https://storyteller-git-master-muhammad-shahs-projects.vercel.app/"
+    # "https://storytellerai.netlify.app",  # Add your Netlify app origin here
+    # "https://storyteller-beta.vercel.app",
 ]
 
 app.add_middleware(
