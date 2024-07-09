@@ -11,22 +11,22 @@ app = FastAPI()
 async def check():
     return 'hello'
 
-# origins = [
-#     "http://localhost:3000",
-#     "http://127.0.0.1:3000",
-#     "https://storyteller-liart.vercel.app",
-#     "https://storyteller-git-master-muhammad-shahs-projects.vercel.app",
-#     "https://storyteller-60m87xh7q-muhammad-shahs-projects.vercel.app",
+origins = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://storyteller-liart.vercel.app",
+    "https://storyteller-git-master-muhammad-shahs-projects.vercel.app",
+    "https://storyteller-60m87xh7q-muhammad-shahs-projects.vercel.app",
 
-# ]
+]
 
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=origins,
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class GenerateRequest(BaseModel):
