@@ -4,7 +4,7 @@ from langchain_groq.chat_models import ChatGroq
 from langchain_core.messages import AIMessage, SystemMessage, HumanMessage
 from dotenv import find_dotenv, load_dotenv
 
-dotenv_path = '.env'
+dotenv_path = 'api\.env'
 load_dotenv(dotenv_path)
 GROQ_API = os.getenv('GROQ_API')
 

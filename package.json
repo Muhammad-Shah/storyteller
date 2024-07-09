@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "backend": "uvicorn src.fastapi.main:app --reload",
+    "backend": "uvicorn api.main:app --reload",
     "dev": "concurrently \"npm run backend\" \"npm start\""
   },
   "dependencies": {

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from typing import Optional
 from pydantic import BaseModel
-from src.fastapi.generation import generate, complete
+from api.generation import generate, complete
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()

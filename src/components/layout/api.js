@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://storyteller-coral.vercel.app/api",
+  baseURL:
+    "http://localhost:8000" || "https://storyteller-coral.vercel.app/api",
 });
 
 export default api;
