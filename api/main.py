@@ -52,7 +52,7 @@ class CompleteRequest(BaseModel):
     setting_description: Optional[str] = None
 
 
-@app.post("/generate")
+@app.post("/api/generate")
 def generate_story(request: GenerateRequest):
     response = generate(
         topic=request.topic,
