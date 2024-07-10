@@ -40,9 +40,6 @@ export default function Home() {
         },
       });
 
-      console.log("Response status:", response.status); // Check the response status
-      console.log("Response headers:", response.headers); // Check the response headers
-
       const data = await response.json();
       console.log("Story generated:", data);
       setGeneratedStory(data.story);
