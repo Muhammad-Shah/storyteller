@@ -45,7 +45,7 @@ class CompleteRequest(BaseModel):
     setting_description: Optional[str] = None
 
 
-@app.get("/api/generate")
+@app.post("/api/generate")
 def generate_story(request: GenerateRequest):
     response = generate(
         topic=request.topic,
@@ -73,3 +73,7 @@ def complete_story(request: CompleteRequest):
         setting_description=request.setting_description
     )
     return {"completed_story": response}
+
+@app.get("/api/python")
+def hello_world():
+    return {"message": "Hello World"}
