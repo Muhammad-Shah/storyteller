@@ -1,8 +1,10 @@
+"use client";
 import React, { useState } from "react";
-import { FaCopy } from "react-icons/fa"; // Import the copy icon
-import axios from 'axios';
+// import { FaCopy } from "react-icons/fa"; // Import the copy icon
+// import axios from "axios";
+import Link from "next/link";
 
-const Form = () => {
+export default function Home() {
   const [storyPlot, setStoryPlot] = useState("");
   const [storyLength, setStoryLength] = useState("short");
   const [creativityLevel, setCreativityLevel] = useState(50);
@@ -17,29 +19,37 @@ const Form = () => {
   const [copyStatus, setCopyStatus] = useState<string | null>(null);
 
   const handleGenerateStory = async () => {
-  const storyData = {
-    topic: storyPlot,
-    length: storyLength,
-    temperature: creativityLevel / 100,
-    genre: genre || null,
-    narrative_perspective: narrativePerspective || null,
-    character_name: characterName || null,
-    character_description: characterDescription || null,
-    setting_description: settingDescription || null,
-  };
+    const storyData = {
+      topic: storyPlot,
+      length: storyLength,
+      temperature: creativityLevel / 100,
+      genre: genre || null,
+      narrative_perspective: narrativePerspective || null,
+      character_name: characterName || null,
+      character_description: characterDescription || null,
+      setting_description: settingDescription || null,
+    };
 
-  try {
-    const response = await axios.post('/api/generate', storyData);
-    const data = response.data;
-    console.log("Story generated:", data);
-    setGeneratedStory(data.story);
-    setError(null); // Clear any previous errors
-  } catch (error) {
-    console.error("There was a problem with the fetch operation:", error);
-    setError("Failed to generate story. Please try again.");
-    setGeneratedStory(null); // Clear the story if there was an error
-  }
-};
+    try {
+      // const response = await axios.post("/api/generate", storyData);
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        body: JSON.stringify(storyData),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      
+      const data = await response.json();
+      console.log("Story generated:", data);
+      setGeneratedStory(data.story);
+      setError(null); // Clear any previous errors
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+      setError("Failed to generate story. Please try again.");
+      setGeneratedStory(null); // Clear the story if there was an error
+    }
+  };
 
   const handleTextToSpeech = () => {
     if (generatedStory) {
@@ -200,17 +210,17 @@ const Form = () => {
           <div className="mt-6 mb-6 p-4 bg-gray-100 border border-gray-300 rounded-3xl">
             <h2 className="text-2xl font-bold">Generated Story:</h2>
             <p>{generatedStory}</p>
-            <div className="flex justify-end mt-2">
+            {/* <div className="flex justify-end mt-2">
               <button
                 onClick={handleCopyStory}
                 className="flex items-center p-2 bg-blue-400 text-white font-bold rounded-md hover:cursor-pointer transition duration-100 hover:scale-105"
               >
                 <FaCopy className="mr-2" /> Copy
               </button>
-            </div>
-            {copyStatus && (
+            </div> */}
+            {/* {copyStatus && (
               <p className="text-green-500 mt-2 text-right">{copyStatus}</p>
-            )}
+            )} */}
           </div>
         )}
       </div>
@@ -218,4 +228,3 @@ const Form = () => {
   );
 };
 
-export default Form;
