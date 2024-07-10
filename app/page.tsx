@@ -31,26 +31,18 @@ export default function Home() {
     };
 
     try {
-      const response = await fetch("/api/generate", {
-        method: "GET",
-      });
-      const data = await response.json();
-      console.log(data.story);
-    } catch (error) {
-      console.error(error);
-    }
-    
-
-    try {
       // const response = await axios.post("/api/generate", storyData);
       const response = await fetch("/api/generate", {
         method: "POST",
         body: JSON.stringify(storyData),
         headers: {
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+        },
       });
-      
+
+      console.log("Response status:", response.status); // Check the response status
+      console.log("Response headers:", response.headers); // Check the response headers
+
       const data = await response.json();
       console.log("Story generated:", data);
       setGeneratedStory(data.story);
@@ -237,5 +229,4 @@ export default function Home() {
       </div>
     </div>
   );
-};
-
+}
