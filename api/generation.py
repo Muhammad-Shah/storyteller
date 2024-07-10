@@ -7,7 +7,7 @@ from langchain_core.messages import AIMessage, SystemMessage, HumanMessage
 dotenv_path = 'api\.env'
 # load_dotenv(dotenv_path)
 # GROQ_API = os.getenv('GROQ_API')
-GROQ_API = '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'
+GROQ_API = 'gsk_5VeAUTf56SkNkP5MjNFWGdyb3FYN4CcCnQfqu7tA9Ytu9dVOiqo'
 
 
 def chat_model(temperature):
