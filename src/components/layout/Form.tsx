@@ -29,7 +29,7 @@ const Form = () => {
   };
 
   try {
-    const response = await axios.post('/api/generation', storyData);
+    const response = await axios.post('/api/generate', storyData);
     const data = response.data;
     console.log("Story generated:", data);
     setGeneratedStory(data.story);

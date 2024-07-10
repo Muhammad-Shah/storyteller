@@ -14,7 +14,6 @@ async def check():
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://storynlp.netlify.app/",
     "https://storyteller-liart.vercel.app",
     "https://storyteller-git-master-muhammad-shahs-projects.vercel.app",
     "https://storyteller-60m87xh7q-muhammad-shahs-projects.vercel.app",
