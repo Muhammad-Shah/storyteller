@@ -6,11 +6,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-
-@app.get('/')
-async def check():
-    return 'hello'
-
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
@@ -66,7 +61,7 @@ def generate_story(request: GenerateRequest):
     return {"story": response}
 
 
-@app.post("/complete")
+@app.post("/api/complete")
 def complete_story(request: CompleteRequest):
     response = complete(
         partial_story=request.topic,
