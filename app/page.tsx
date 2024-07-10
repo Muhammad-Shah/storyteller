@@ -31,6 +31,17 @@ export default function Home() {
     };
 
     try {
+      const response = await fetch("/api/generate", {
+        method: "GET",
+      });
+      const data = await response.json();
+      console.log(data.story);
+    } catch (error) {
+      console.error(error);
+    }
+    
+
+    try {
       // const response = await axios.post("/api/generate", storyData);
       const response = await fetch("/api/generate", {
         method: "POST",
